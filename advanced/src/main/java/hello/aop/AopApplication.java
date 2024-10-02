@@ -7,8 +7,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 
-@SpringBootApplication//(scanBasePackages = "hello.aop.order")
-@ComponentScan(basePackages = "hello.aop.order")
+@SpringBootApplication
+@ComponentScan
 public class AopApplication {
 
 	private static ApplicationContext context;
