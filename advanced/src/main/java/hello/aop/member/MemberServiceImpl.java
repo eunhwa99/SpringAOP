@@ -4,7 +4,7 @@ import hello.aop.member.annotation.ClassAop;
 import hello.aop.member.annotation.MethodAop;
 import org.springframework.stereotype.Component;
 
-//@ClassAop
+@ClassAop
 @Component
 public class MemberServiceImpl implements MemberService {
 
