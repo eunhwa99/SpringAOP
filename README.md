@@ -9,3 +9,4 @@
 - [Spring AOP - within, args](https://silver-programmer.tistory.com/entry/Spring-AOP-%ED%8F%AC%EC%9D%B8%ED%8A%B8%EC%BB%B7pointcut-%EC%A7%80%EC%8B%9C%EC%9E%90within-args)
 - [Spring AOP - @target, @within](https://silver-programmer.tistory.com/entry/Spring-AOP-%ED%8F%AC%EC%9D%B8%ED%8A%B8%EC%BB%B7pointcut-%EC%A7%80%EC%8B%9C%EC%9E%90target-within)
 - [Spring AOP - @annotation, this, target](https://silver-programmer.tistory.com/entry/Spring-AOP-%ED%8F%AC%EC%9D%B8%ED%8A%B8%EC%BB%B7pointcut-%EC%A7%80%EC%8B%9C%EC%9E%90annotation-this-target)
+- [Spring AOP Internal Call problem and solution](https://silver-programmer.tistory.com/entry/%EC%8A%A4%ED%94%84%EB%A7%81-AOP%EC%9D%98-%EB%82%B4%EB%B6%80%ED%98%B8%EC%B6%9C-%EB%AC%B8%EC%A0%9C-%EB%B0%8F-%ED%95%B4%EA%B2%B0%EB%B2%95)
