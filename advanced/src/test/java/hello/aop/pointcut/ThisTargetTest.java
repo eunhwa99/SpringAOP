@@ -26,31 +26,38 @@ public class ThisTargetTest {
         log.info("memberService Proxy={}", memberService.getClass());
         memberService.hello("helloA");
     }
+
+    // this: proxy 객체를 보고 판단
+    // target: target 객체를 보고 판단
+    
     @Slf4j
     @Aspect
     static class ThisTargetAspect {
-        //부모 타입 허용
-        @Around("this(hello.aop.member.MemberService)")
+        //부모 타입 허용 (JDKProxy, CGLIB 모두 AOP 적용 가능)
+        @Around("this(hello.aop.member.MemberService)") 
         public Object doThisInterface(ProceedingJoinPoint joinPoint) throws
                 Throwable {
             log.info("[this-interface] {}", joinPoint.getSignature());
             return joinPoint.proceed();
         }
-        //부모 타입 허용
-        @Around("target(hello.aop.member.MemberService)")
+        
+        //부모 타입 허용 (JDKProxy, CGLIB 모두 AOP 적용 가능)
+        @Around("target(hello.aop.member.MemberService)") 
         public Object doTargetInterface(ProceedingJoinPoint joinPoint) throws
                 Throwable {
             log.info("[target-interface] {}", joinPoint.getSignature());
             return joinPoint.proceed();
         }
+        
         //this: 스프링 AOP 프록시 객체 대상
-        //JDK 동적 프록시는 인터페이스를 기반으로 생성되므로 구현 클래스를 알 수 없음
-        //CGLIB 프록시는 구현 클래스를 기반으로 생성되므로 구현 클래스를 알 수 있음
+        //JDK 동적 프록시는 인터페이스(MemberService)를 기반으로 생성되므로 구현 클래스(MemberServiceImpl)를 알 수 없음 
+        //CGLIB 프록시는 구현 클래스(MemberSerivceImpl)를 기반으로 생성되므로 구현 클래스를 알 수 있음 
         @Around("this(hello.aop.member.MemberServiceImpl)")
         public Object doThis(ProceedingJoinPoint joinPoint) throws Throwable {
             log.info("[this-impl] {}", joinPoint.getSignature());
             return joinPoint.proceed();
         }
+        
         //target: 실제 target 객체 대상
         @Around("target(hello.aop.member.MemberServiceImpl)")
         public Object doTarget(ProceedingJoinPoint joinPoint) throws Throwable {
@@ -58,4 +65,6 @@ public class ThisTargetTest {
             return joinPoint.proceed();
         }
     }
+
+// 프록시를 대상으로 하는 this 의 경우 구체 클래스를 지정하면 프록시 생성 전략에 따라서 다른 결과가 나올 수 있다
 }
