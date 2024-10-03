@@ -13,6 +13,7 @@
 
 
 
+
 ## JDKProxy vs CGLIB
 ### [Type casting](https://github.com/eunhwa99/SpringAOP/blob/main/advanced/src/test/java/hello/aop/proxys/ProxyCastingTest.java)
 1. JDKProxy
@@ -21,13 +22,41 @@
 - `MemberServiceImpl` type proxy -> JDKProxy creates proxy based on `MemberService` which is an interface
 - Therefore, it's impossible to cast proxy to `MemberServiceImpl`. (proxy is made based on `MemberService` type)
 ![image](https://github.com/user-attachments/assets/1e597fde-e133-438f-90c6-1f375211d7cd)
-
-2. CGLIB
+---
+2. CGLIB  
 ![image](https://github.com/user-attachments/assets/e2d70318-6381-4e98-b4c4-b79441162ff8)
 
 - `MemberServiceImpl` type proxy -> CGLIB creates proxy based on `MemberServiceImpl` which is a concrete class
 - Therefore, it's possible to cast proxy to `MemberService` as well as `MemberServiceImpl`
 ![image](https://github.com/user-attachments/assets/eb9b1698-af11-496e-8942-9f7e71754e05)
+
+
+### [Dependy Injection](https://github.com/eunhwa99/SpringAOP/blob/main/advanced/src/test/java/hello/aop/proxys/ProxyDITest.java)
+
+1. JDKProxy
+
+- When run the `ProxyDITest` with `spring.aop.proxy-target-class=false` option, it uses JDKProxy.
+- Therefore, it produces error like below. (JDKProxy cannot inject bean to MemberServiceImpl)
+
+```
+org.springframework.beans.factory.BeanNotOfRequiredTypeException: Bean named 'memberServiceImpl' is expected to be of type 'hello.aop.member.MemberServiceImpl' but was actually of type 'jdk.proxy3.$Proxy55'
+```
+
+![image](https://github.com/user-attachments/assets/9b5a3c4e-de37-4b0b-a117-e648d52a9720)
+
+
+---
+2. CGLIB  
+- When run the `ProxyDITest` with `spring.aop.proxy-target-class=true` option(which is default), it uses CGLIB.
+- Therefore, it does not produce any errors.
+
+![image](https://github.com/user-attachments/assets/f75be4e3-d743-4785-9f35-9cb7c671ffbe)
+
+
+Therefore, if you want to use DI to concrete class with AOP proxy applied, you can use CGLIB to create AOP proxies based on the concrete class. In addition, Spring ultimately decided to use CGLIB as the default starting from Spring Boot 2.0, so you don't have to configure anything to use CGLIB.
+
+
+
 
 
 
