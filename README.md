@@ -14,14 +14,15 @@ Code Repo for learning Spring and organizing blog posts.
 
 
 
-
-## JDKProxy vs CGLIB
-### [Type casting](https://github.com/eunhwa99/SpringAOP/blob/main/advanced/src/test/java/hello/aop/proxys/ProxyCastingTest.java)
+## Base Knowledge
+### JDK Proxy vs CGLIB
+#### [Type casting](https://github.com/eunhwa99/SpringAOP/blob/main/advanced/src/test/java/hello/aop/proxys/ProxyCastingTest.java)
 1. JDKProxy
 ![image](https://github.com/user-attachments/assets/641cade5-14ce-4f17-b76f-d2f1274546b0)
 
 - `MemberServiceImpl` type proxy -> JDKProxy creates proxy based on `MemberService` which is an interface
 - Therefore, it's impossible to cast proxy to `MemberServiceImpl`. (proxy is made based on `MemberService` type)
+- 
 ![image](https://github.com/user-attachments/assets/1e597fde-e133-438f-90c6-1f375211d7cd)
 ---
 2. CGLIB  
