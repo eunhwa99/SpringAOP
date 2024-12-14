@@ -1,5 +1,5 @@
 # SpringAOP
-- Code Repo for learning Spring and organizing blog posts.
+Code Repo for learning Spring and organizing blog posts.
 
 - [AOP 적용 방식](https://silver-programmer.tistory.com/entry/AOP-%EC%A0%81%EC%9A%A9-%EB%B0%A9%EC%8B%9D)
 - [Spring AOP란?](https://silver-programmer.tistory.com/entry/Spring-AOP-%EB%9E%80)
